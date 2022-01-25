@@ -1,19 +1,25 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { DECREMENT, INCREMENT } from "../redux/actions/types";
 
 function Counter() {
-    const [count, setCount] = useState(0);
+  const countState = useSelector((state) => state.count);
+  const dispatch = useDispatch();
 
-    const handelIncrement = () => {
-        setCount(count + 1)
-    };
-    const handelDecrement = () => {
-        setCount(count - 1)
-    };
-    
+  const handelIncrement = () => {
+    dispatch({
+      type: INCREMENT,
+    });
+  };
+  const handelDecrement = () => {
+    dispatch({
+      type: DECREMENT,
+    });
+  };
+
   return (
     <div>
-      <p>{count}</p>
+      <p>{countState}</p>
       <button onClick={handelIncrement}>Increment</button>
       <button onClick={handelDecrement}>Decrement</button>
     </div>
