@@ -4,17 +4,17 @@ import { incrementAction, decrementAction, incrementByValue} from "../redux/acti
 
 
 function Counter() {
-  const { count } = useSelector((state) => state);
+  const { count } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
   const handelIncrement = () => {
-    dispatch(incrementAction());
+    incrementAction(dispatch);
   };
   const handelDecrement = () => {
-    dispatch(decrementAction());
+    decrementAction(dispatch);
   };
   const handelIncByValue = (vl) => {
-    dispatch(incrementByValue(vl));
+    incrementByValue(vl, dispatch);
   };
 
   return (
