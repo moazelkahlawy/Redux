@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { incrementAction, decrementAction, incrementByValue} from "../redux/actions/counterActions";
+// import { incrementAction, decrementAction} from "../redux/actions/counterActions";
+import { decrement, increment } from "../redux/counterSlice";
 
 
 function Counter() {
@@ -8,21 +9,23 @@ function Counter() {
   const dispatch = useDispatch();
 
   const handelIncrement = () => {
-    incrementAction(dispatch);
+    dispatch(increment())
+    // incrementAction(dispatch);
   };
   const handelDecrement = () => {
-    decrementAction(dispatch);
+    dispatch(decrement())
+    // decrementAction(dispatch);
   };
-  const handelIncByValue = (vl) => {
-    incrementByValue(vl, dispatch);
-  };
+  // const handelIncByValue = (vl) => {
+  //   incrementByValue(vl, dispatch);
+  // };
 
   return (
     <div>
       <p>{count}</p>
       <button onClick={handelIncrement}>Increment</button>
       <button onClick={handelDecrement}>Decrement</button>
-      <button onClick={() => handelIncByValue(50)}>By Value</button>
+      {/* <button onClick={() => handelIncByValue(50)}>By Value</button> */}
     </div>
   );
 }
